@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ragib's Kitchen | Taste Beyond Expectations — Modern Mor, Dinajpur</title>
+  
+  <!-- Tailwind CSS CDN with Preflight Disabled to prevent Bootstrap 5 conflicts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+        collapse: false
+      }
+    };
+  </script>
+  
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --rk-primary: #101820;
+      --rk-secondary: #1B263B;
+      --rk-accent: #D4A853;
+      --rk-accent-hover: #e2b96b;
+      --rk-bg: #F8F6F1;
+      --rk-text-light: #FFFFFF;
+      --rk-text-dark: #101820;
+      --rk-card-radius: 20px;
+      --rk-transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--rk-bg);
+      color: var(--rk-text-dark);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    h1, h2, h3, h4, .font-serif-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--rk-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--rk-accent);
+      border-radius: 4px;
+    }
+
+    /* Fix Bootstrap 5 + Tailwind CSS .collapse & Modal/Offcanvas Visibility Conflicts */
+    .collapse:not(.show) {
+      display: none !important;
+    }
+    .collapse.show {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    .navbar-collapse.collapse.show {
+      display: block !important;
+      visibility: visible !important;
+    }
+    @media (min-width: 1200px) {
+      .navbar-expand-xl .navbar-collapse {
+        display: flex !important;
+        visibility: visible !important;
+        height: auto !important;
+      }
+    }
+    .collapsing {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.32s ease;
+      visibility: visible !important;
+    }
+    .offcanvas {
+      z-index: 1080 !important;
+      visibility: hidden;
+    }
+    .offcanvas.show, .offcanvas.showing, .offcanvas.hiding {
+      visibility: visible !important;
+    }
+    .modal {
+      z-index: 1090 !important;
+    }
+    .modal-backdrop {
+      z-index: 1075 !important;
+    }
+    .offcanvas-backdrop {
+      z-index: 1070 !important;
+    }
+
+    /* Rock-Solid Fixed Navbar (Never clips or shifts when scrolling up/down) */
+    .rk-navbar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      min-height: 74px;
+      background: rgba(16, 24, 32, 0.97);
+      border-bottom: 1px solid rgba(212, 168, 83, 0.28);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      will-change: transform;
+      z-index: 1055 !important;
+    }
+    .rk-navbar.scrolled {
+      background: #101820;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    }
+    @media (max-width: 1199.98px) {
+      .rk-navbar .navbar-collapse {
+        background: #101820;
+        padding: 1rem;
+        margin-top: 0.65rem;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        border-radius: 16px;
+        border: 1px solid rgba(212, 168, 83, 0.3);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .rk-nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 500;
+      font-size: 0.92rem;
+      padding: 0.5rem 0.85rem !important;
+      border-radius: 50px;
+      transition: var(--rk-transition);
+    }
+    .rk-nav-link:hover, .rk-nav-link.active {
+      color: var(--rk-accent) !important;
+      background: rgba(212, 168, 83, 0.1);
+    }
+
+    /* Luxury Gold & Dark Buttons */
+    .btn-gold {
+      background: linear-gradient(135deg, #D4A853 0%, #c0913b 100%);
+      color: #101820 !important;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.75rem;
+      box-shadow: 0 8px 24px rgba(212, 168, 83, 0.28);
+      transition: var(--rk-transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #e5be6e 0%, #D4A853 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(212, 168, 83, 0.42);
+    }
+
+    .btn-outline-gold {
+      background: rgba(212, 168, 83, 0.08);
+      color: var(--rk-accent) !important;
+      border: 1.5px solid rgba(212, 168, 83, 0.55);
+      font-weight: 600;
+      border-radius: 50px;
+      padding: 0.75rem 1.65rem;
+      transition: var(--rk-transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .btn-outline-gold:hover {
+      background: var(--rk-accent);
+      color: var(--rk-primary) !important;
+      transform: translateY(-2px);
+    }
+
+    /* 100vh Full Viewport Hero Section */
+    .rk-hero {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 80% 20%, #1B263B 0%, #101820 70%);
+      color: var(--rk-text-light);
+      overflow: hidden;
+      padding-top: 90px;
+      padding-bottom: 50px;
+    }
+
+    .rk-hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.16;
+      animation: subtleZoom 24s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    .rk-hero-glow {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.18) 0%, rgba(212, 168, 83, 0) 70%);
+      border-radius: 50%;
+      top: 10%;
+      right: 5%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes subtleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.09); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float-card-1 {
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+    .float-card-2 {
+      animation: floatSlow 6.5s ease-in-out 1s infinite;
+    }
+    .float-card-3 {
+      animation: floatSlow 5.8s ease-in-out 2s infinite;
+    }
+
+    .hero-glass-card {
+      background: rgba(27, 38, 59, 0.76);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(212, 168, 83, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transition: var(--rk-transition);
+    }
+    .hero-glass-card:hover {
+      border-color: var(--rk-accent);
+      transform: translateY(-4px);
+    }
+
+    /* Section Styling */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(212, 168, 83, 0.15);
+      color: #b1842c;
+      border: 1px solid rgba(212, 168, 83, 0.35);
+    }
+    .section-badge-dark {
+      background: rgba(212, 168, 83, 0.16);
+      color: var(--rk-accent);
+      border: 1px solid rgba(212, 168, 83, 0.4);
+    }
+
+    /* Food Menu Cards */
+    .food-card {
+      background: #FFFFFF;
+      border-radius: var(--rk-card-radius);
+      border: 1px solid rgba(16, 24, 32, 0.06);
+      box-shadow: 0 10px 30px rgba(16, 24, 32, 0.05);
+      transition: var(--rk-transition);
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .food-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px rgba(16, 24, 32, 0.12);
+      border-color: rgba(212, 168, 83, 0.5);
+    }
+    .food-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #1B263B;
+    }
+    .food-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .food-card:hover .food-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    /* Category Filter Pills */
+    .cat-pill {
+      border: 1px solid rgba(16, 24, 32, 0.12);
+      background: #FFFFFF;
+      color: var(--rk-primary);
+      padding: 0.6rem 1.35rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--rk-transition);
+      cursor: pointer;
+    }
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--rk-primary);
+      color: var(--rk-accent);
+      border-color: var(--rk-accent);
+      box-shadow: 0 6px 18px rgba(16, 24, 32, 0.16);
+    }
+
+    /* Order Tracker Stepper */
+    .tracker-step {
+      position: relative;
+      text-align: center;
+      flex: 1;
+    }
+    .tracker-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #e9ecef;
+      color: #6c757d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      transition: var(--rk-transition);
+      position: relative;
+      z-index: 2;
+    }
+    .tracker-step.completed .tracker-dot {
+      background: var(--rk-primary);
+      color: var(--rk-accent);
+      border-color: var(--rk-accent);
+    }
+    .tracker-step.active .tracker-dot {
+      background: var(--rk-accent);
+      color: var(--rk-primary);
+      box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.25);
+      transform: scale(1.1);
+    }
+
+    /* Payment Selector Cards */
+    .pay-method-card {
+      border: 2px solid rgba(16, 24, 32, 0.1);
+      border-radius: 14px;
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: var(--rk-transition);
+      background: #fff;
+    }
+    .pay-method-card.selected {
+      border-color: var(--rk-accent);
+      background: rgba(212, 168, 83, 0.08);
+      box-shadow: 0 4px 14px rgba(212, 168, 83, 0.2);
+    }
+
+    /* Gallery Cards */
+    .gallery-item {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      height: 270px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(16, 24, 32, 0.08);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.09);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(16, 24, 32, 0.85) 0%, rgba(16, 24, 32, 0.1) 60%);
+      opacity: 0;
+      transition: var(--rk-transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem;
+      color: #fff;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* Admin Portal Sidebar */
+    .admin-sidebar {
+      background: var(--rk-primary);
+      color: #fff;
+      min-height: calc(100vh - 76px);
+      border-right: 1px solid rgba(212, 168, 83, 0.2);
+    }
+    .admin-nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+      transition: var(--rk-transition);
+    }
+    .admin-nav-btn:hover, .admin-nav-btn.active {
+      background: rgba(212, 168, 83, 0.15);
+      color: var(--rk-accent);
+    }
+
+    /* Toast Notification */
+    #rkToastContainer {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2050;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rk-toast {
+      background: var(--rk-primary);
+      color: #fff;
+      border-left: 4px solid var(--rk-accent);
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 280px;
+      animation: slideInRight 0.3s ease forwards;
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= STICKY GLASSMORPHIC NAVBAR ================= -->
+  <nav class="navbar navbar-expand-xl rk-navbar fixed-top py-2">
+    <div class="container">
+      <!-- Brand Logo -->
+      <a class="navbar-brand d-flex align-items-center gap-2 text-white text-decoration-none" href="#" onclick="switchAppView('store')">
+        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:44px;height:44px;background:linear-gradient(135deg,#D4A853,#b1842c);color:#101820;">
+          <i class="fa-solid fa-utensils fs-5"></i>
+        </div>
+        <div>
+          <span class="font-serif-display fw-bold fs-4 tracking-wide text-white d-block lh-1">RAGIB'S <span style="color:var(--rk-accent);">KITCHEN</span></span>
+          <small class="text-white-50" style="font-size:0.68rem;letter-spacing:0.12em;">EST. 2024 • DINAJPUR</small>
+        </div>
+      </a>
+
+      <!-- Mobile Right Actions -->
+      <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+        <button class="btn btn-sm btn-outline-gold position-relative px-3 py-2" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge rounded-pill bg-warning text-dark ms-1 cart-count-badge">0</span>
+        </button>
+      </div>
+
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#rkNavbarContent">
+        <i class="fa-solid fa-bars-staggered fs-4" style="color:var(--rk-accent);"></i>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="rkNavbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0 gap-1" id="storeNavLinks">
+          <li class="nav-item"><a class="nav-link rk-nav-link active" href="#hero" onclick="switchAppView('store')">Home</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#about" onclick="switchAppView('store')">About</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#menu" onclick="switchAppView('store')">Menu</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#offers" onclick="switchAppView('store')">Special Offers</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#reservation" onclick="switchAppView('store')">Reservation</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#gallery" onclick="switchAppView('store')">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#reviews" onclick="switchAppView('store')">Reviews & FAQ</a></li>
+          <li class="nav-item"><a class="nav-link rk-nav-link" href="#contact" onclick="switchAppView('store')">Contact</a></li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap align-items-center gap-2 mt-3 mt-xl-0">
+          <!-- Track Order Button -->
+          <button class="btn btn-sm btn-outline-gold py-2 px-3" type="button" onclick="openOrderTrackerModal()">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>Track Order</span>
+          </button>
+
+          <!-- Cart Trigger Button -->
+          <button class="btn btn-sm btn-gold py-2 px-3 d-none d-xl-inline-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-total-text">৳0</span>
+            <span class="badge rounded-pill bg-dark text-warning ms-1 cart-count-badge">0</span>
+          </button>
+
+          <!-- Admin Portal Toggle Button -->
+          <button id="adminToggleBtn" type="button" class="btn btn-sm rounded-pill px-3 py-2 text-white border border-secondary" style="background:rgba(255,255,255,0.08);" onclick="toggleAdminPortal()">
+            <i class="fa-solid fa-user-shield me-1" style="color:var(--rk-accent);"></i>
+            <span id="adminToggleText">Admin Portal</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================= -->
+  <!--                     CUSTOMER STOREFRONT VIEW                      -->
+  <!-- ================================================================= -->
+  <div id="customerStoreView">
+
+    <!-- ================= 100VH FULL-SCREEN HERO SECTION ================= -->
+    <section id="hero" class="rk-hero">
+      <div class="rk-hero-bg-overlay"></div>
+      <div class="rk-hero-glow"></div>
+
+      <div class="container position-relative z-1 py-4">
+        <div class="row align-items-center g-5">
+          
+          <!-- Left Column: Brand Storytelling & CTAs -->
+          <div class="col-lg-7">
+            <!-- Top Status & Location Row -->
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+              <span class="section-badge section-badge-dark">
+                <i class="fa-solid fa-crown"></i> Dinajpur's Premier Culinary Destination • Modern Mor
+              </span>
+              <span id="liveOpenStatusBadge" class="badge rounded-pill px-3 py-2 fw-medium" style="background:rgba(16, 185, 129, 0.18); color:#34d399; border:1px solid rgba(52,211,153,0.4);">
+                <i class="fa-solid fa-circle fa-beat-fade me-1" style="font-size:0.55rem;"></i> Open Now
+              </span>
+            </div>
+
+            <!-- Display Headline -->
+            <h1 class="display-3 fw-bold text-white mb-3 lh-sm">
+              Taste Beyond <br />
+              <span style="color:var(--rk-accent); font-style: italic;">Expectations.</span>
+            </h1>
+
+            <!-- Subtext -->
+            <p class="lead text-white-50 mb-4 pe-lg-5" style="font-size: 1.08rem; line-height: 1.75;">
+              Welcome to <strong class="text-white">Ragib's Kitchen</strong> at Modern Mor, Dinajpur Sadar. Experience chef-crafted steaks, wood-fired gourmet pizzas, artisan burgers, and decadent desserts prepared fresh with 100% halal ingredients.
+            </p>
+
+            <!-- Dual CTA Buttons + Offer Trigger -->
+            <div class="d-flex flex-wrap align-items-center gap-3 mb-5">
+              <a href="#menu" class="btn-gold px-4 py-3 fs-6">
+                <i class="fa-solid fa-utensils"></i> Explore Menu & Order
+              </a>
+              <a href="#reservation" class="btn-outline-gold px-4 py-3 fs-6">
+                <i class="fa-regular fa-calendar-check"></i> Book a Table
+              </a>
+              <a href="#offers" class="text-decoration-none d-inline-flex align-items-center gap-2 ms-lg-2 text-white-50 hover-gold small">
+                <span class="badge rounded-pill text-dark" style="background:var(--rk-accent);">SAVE 10%</span>
+                <span class="text-white text-decoration-underline">Use Code: RAGIB10</span>
+              </a>
+            </div>
+
+            <!-- Trust Badges Grid -->
+            <div class="row g-3 pt-2 border-top border-secondary border-opacity-25">
+              <div class="col-4 col-sm-4">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(212,168,83,0.15);color:var(--rk-accent);">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div>
+                    <div class="fw-bold text-white small">4.9 ★ Rating</div>
+                    <div class="text-white-50" style="font-size:0.75rem;">1,200+ Happy Diners</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 col-sm-4">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(212,168,83,0.15);color:var(--rk-accent);">
+                    <i class="fa-solid fa-bolt"></i>
+                  </div>
+                  <div>
+                    <div class="fw-bold text-white small">30-Min Delivery</div>
+                    <div class="text-white-50" style="font-size:0.75rem;">Across Dinajpur Sadar</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 col-sm-4">
+                <div class="d-flex align-items-center gap-2">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(212,168,83,0.15);color:var(--rk-accent);">
+                    <i class="fa-solid fa-leaf"></i>
+                  </div>
+                  <div>
+                    <div class="fw-bold text-white small">100% Fresh Halal</div>
+                    <div class="text-white-50" style="font-size:0.75rem;">Premium Ingredients</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Floating Culinary Showcase -->
+          <div class="col-lg-5">
+            <div class="position-relative mx-auto" style="max-width: 470px;">
+              <!-- Main Featured Hero Dish Showcase -->
+              <div class="hero-glass-card p-3 position-relative overflow-hidden float-card-1">
+                <div class="position-relative rounded-4 overflow-hidden" style="height: 280px;">
+                  <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85" 
+                       alt="Grilled Chicken Steak" 
+                       class="w-100 h-100 object-fit-cover"
+                       onerror="this.src='https://placehold.co/800x600/1B263B/D4A853?text=Grilled+Chicken+Steak'" />
+                  <div class="position-absolute top-0 start-0 m-3">
+                    <span class="badge rounded-pill px-3 py-2 text-dark fw-bold" style="background:var(--rk-accent);">
+                      <i class="fa-solid fa-fire me-1"></i> Chef's Signature
+                    </span>
+                  </div>
+                  <div class="position-absolute bottom-0 end-0 m-3">
+                    <span class="badge bg-dark bg-opacity-75 text-white px-3 py-2 rounded-pill border border-warning border-opacity-50">
+                      Main Course
+                    </span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between pt-3 px-1">
+                  <div>
+                    <h5 class="text-white fw-bold mb-1 font-serif-display">Grilled Chicken Steak</h5>
+                    <p class="text-white-50 small mb-0">Herb-marinated tender steak, sautéed veggies & mash</p>
+                  </div>
+                  <div class="text-end ms-2">
+                    <div class="fs-5 fw-bold" style="color:var(--rk-accent);">৳450</div>
+                    <button class="btn btn-sm btn-gold py-1 px-3 mt-1" onclick="quickAddByName('Grilled Chicken Steak')">
+                      Quick Add +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary Floating Mini Card 1: Supreme Pizza -->
+              <div class="hero-glass-card p-2 px-3 mt-3 d-flex align-items-center justify-content-between float-card-2">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80" 
+                       alt="Supreme Pizza" 
+                       class="rounded-3 object-fit-cover" 
+                       style="width:64px;height:64px;"
+                       onerror="this.src='https://placehold.co/120x120/1B263B/D4A853?text=Pizza'" />
+                  <div>
+                    <span class="badge bg-warning bg-opacity-25 text-warning mb-1" style="font-size:0.65rem;">MOST POPULAR</span>
+                    <h6 class="text-white mb-0 fw-semibold">Supreme Pizza (12")</h6>
+                    <small class="text-white-50">Loaded chicken, beef, olives & mozzarella</small>
+                  </div>
+                </div>
+                <div class="text-end ms-2">
+                  <div class="fw-bold" style="color:var(--rk-accent);">৳750</div>
+                  <button class="btn btn-sm btn-outline-gold py-1 px-2 mt-1" style="font-size:0.75rem;" onclick="quickAddByName('Supreme Pizza')">
+                    Add +
+                  </button>
+                </div>
+              </div>
+
+              <!-- Secondary Floating Mini Card 2: Double Cheese Burger -->
+              <div class="hero-glass-card p-2 px-3 mt-3 d-flex align-items-center justify-content-between float-card-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300&q=80" 
+                       alt="Double Cheese Burger" 
+                       class="rounded-3 object-fit-cover" 
+                       style="width:64px;height:64px;"
+                       onerror="this.src='https://placehold.co/120x120/1B263B/D4A853?text=Burger'" />
+                  <div>
+                    <span class="badge bg-info bg-opacity-25 text-info mb-1" style="font-size:0.65rem;">BESTSELLER</span>
+                    <h6 class="text-white mb-0 fw-semibold">Double Cheese Burger</h6>
+                    <small class="text-white-50">Double patty, melted cheddar & house sauce</small>
+                  </div>
+                </div>
+                <div class="text-end ms-2">
+                  <div class="fw-bold" style="color:var(--rk-accent);">৳350</div>
+                  <button class="btn btn-sm btn-outline-gold py-1 px-2 mt-1" style="font-size:0.75rem;" onclick="quickAddByName('Double Cheese Burger')">
+                    Add +
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subtle Scroll Down Indicator -->
+        <div class="text-center mt-5 pt-2 d-none d-md-block">
+          <a href="#about" class="text-white-50 text-decoration-none small d-inline-flex flex-column align-items-center gap-1">
+            <span>Scroll to Discover Ragib's Kitchen</span>
+            <i class="fa-solid fa-chevron-down fa-bounce" style="color:var(--rk-accent);"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT US & CHEF INTRODUCTION SECTION ================= -->
+    <section id="about" class="py-5 my-lg-4">
+      <div class="container py-4">
+        <div class="row align-items-center g-5">
+          <!-- Left Visual Collage -->
+          <div class="col-lg-6">
+            <div class="row g-3 position-relative">
+              <div class="col-7">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" 
+                     alt="Ragib's Kitchen Interior" 
+                     class="w-100 rounded-4 shadow-lg object-fit-cover" 
+                     style="height: 380px;"
+                     onerror="this.src='https://placehold.co/600x800/101820/D4A853?text=Ragibs+Kitchen'" />
+              </div>
+              <div class="col-5 d-flex flex-column gap-3">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" 
+                     alt="Executive Chef" 
+                     class="w-100 rounded-4 shadow object-fit-cover" 
+                     style="height: 182px;"
+                     onerror="this.src='https://placehold.co/500x400/1B263B/D4A853?text=Master+Chef'" />
+                <div class="p-4 rounded-4 text-white d-flex flex-column justify-content-center shadow" style="background: var(--rk-primary); height: 182px; border: 1px solid rgba(212,168,83,0.3);">
+                  <div class="display-6 fw-bold font-serif-display mb-1" style="color:var(--rk-accent);">2024</div>
+                  <div class="fw-semibold small">Established in Modern Mor</div>
+                  <p class="text-white-50 mb-0 mt-1" style="font-size:0.75rem;">Serving Dinajpur Sadar with hospitality & passion.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Story & Mission Content -->
+          <div class="col-lg-6">
+            <span class="section-badge mb-3">
+              <i class="fa-solid fa-utensils"></i> Our Story & Heritage
+            </span>
+            <h2 class="display-6 fw-bold mb-3">Crafting Unforgettable Flavors in the Heart of Dinajpur</h2>
+            <p class="text-secondary mb-4" style="line-height: 1.75;">
+              Founded in 2024 by <strong>Ragib Hosen</strong>, <strong>Ragib's Kitchen</strong> is a modern premium restaurant and café located in <em>Modern Mor, Dinajpur Sadar</em>. We serve delicious food prepared with fresh local ingredients, quality products, and carefully crafted artisan recipes.
+            </p>
+
+            <!-- Mission & Vision Mini Cards -->
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6">
+                <div class="p-3 rounded-4 bg-white shadow-sm border h-100">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i class="fa-solid fa-bullseye" style="color:var(--rk-accent);"></i>
+                    <h6 class="fw-bold mb-0">Our Mission</h6>
+                  </div>
+                  <p class="small text-secondary mb-0">To provide every guest with an enjoyable dining experience, warm service, and unforgettable flavors at honest prices.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="p-3 rounded-4 bg-white shadow-sm border h-100">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i class="fa-solid fa-award" style="color:var(--rk-accent);"></i>
+                    <h6 class="fw-bold mb-0">Our Food Quality</h6>
+                  </div>
+                  <p class="small text-secondary mb-0">100% Halal-certified meats, farm-fresh Dinajpur produce, zero artificial preservatives, and strict kitchen hygiene.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Founder & Culinary Leadership Highlight -->
+            <div class="p-3 rounded-4 d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4" style="background: rgba(212, 168, 83, 0.12); border: 1px solid rgba(212, 168, 83, 0.35);">
+              <div class="d-flex align-items-center gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold fs-5" style="width:52px;height:52px;background:var(--rk-primary);color:var(--rk-accent);">
+                  RH
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0">Ragib Hosen</h6>
+                  <small class="text-secondary">Founder & Owner • Ragib's Kitchen, Dinajpur</small>
+                </div>
+              </div>
+              <span class="fst-italic small fw-semibold" style="color:var(--rk-primary);">"Taste Beyond Expectations."</span>
+            </div>
+
+            <!-- 6 Restaurant Services Badges -->
+            <div>
+              <small class="text-uppercase fw-bold text-secondary d-block mb-2" style="letter-spacing:0.08em;font-size:0.75rem;">Our Services</small>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-chair text-warning me-1"></i> Dine-in</span>
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-globe text-warning me-1"></i> Online Food Ordering</span>
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-truck-fast text-warning me-1"></i> Home Delivery</span>
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-calendar-check text-warning me-1"></i> Table Reservation</span>
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-bag-shopping text-warning me-1"></i> Takeaway</span>
+                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 fw-medium"><i class="fa-solid fa-users text-warning me-1"></i> Family Dining</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INTERACTIVE E-COMMERCE FOOD MENU SECTION ================= -->
+    <section id="menu" class="py-5" style="background: #f2efe9;">
+      <div class="container py-4">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-5">
+          <span class="section-badge mb-2">
+            <i class="fa-solid fa-book-open"></i> Curated Gastronomic Selection
+          </span>
+          <h2 class="display-5 fw-bold mb-2">Explore Our Signature Menu</h2>
+          <p class="text-secondary mb-0">Handcrafted dishes prepared fresh to order. Click any item to customize spice level, size, or add directly to your delivery bag.</p>
+        </div>
+
+        <!-- Category Filter Pills & Search/Sort Bar -->
+        <div class="row g-3 align-items-center justify-content-between mb-4">
+          <!-- Category Pills -->
+          <div class="col-lg-8">
+            <div class="d-flex flex-wrap gap-2" id="menuCategoryPills">
+              <button class="cat-pill active" onclick="filterMenuByCategory('All', this)">All Items</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Burgers', this)">🍔 Burgers</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Pizza', this)">🍕 Pizza</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Pasta', this)">🍝 Pasta</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Main Course', this)">🥩 Main Course</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Desserts', this)">🍰 Desserts</button>
+              <button class="cat-pill" onclick="filterMenuByCategory('Beverages', this)">🥤 Beverages</button>
+            </div>
+          </div>
+
+          <!-- Search & Sort Controls -->
+          <div class="col-lg-4">
+            <div class="d-flex gap-2">
+              <div class="input-group bg-white rounded-pill overflow-hidden border shadow-sm">
+                <span class="input-group-text bg-transparent border-0 ps-3"><i class="fa-solid fa-magnifying-glass text-secondary"></i></span>
+                <input type="text" id="menuSearchInput" class="form-control border-0 shadow-none ps-1" placeholder="Search burger, pizza, steak..." oninput="renderMenuCards()" />
+              </div>
+              <select id="menuSortSelect" class="form-select rounded-pill border shadow-sm fw-medium" style="max-width: 170px;" onchange="renderMenuCards()">
+                <option value="popular">Sort: Popular</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Food Menu Grid -->
+        <div class="row g-4" id="menuGridContainer">
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SPECIAL OFFERS & COMBO DEALS SECTION ================= -->
+    <section id="offers" class="py-5" style="background: linear-gradient(135deg, #101820 0%, #1B263B 100%); color: #fff;">
+      <div class="container py-4">
+        <div class="d-flex flex-wrap align-items-end justify-content-between mb-5 gap-3">
+          <div>
+            <span class="section-badge section-badge-dark mb-2">
+              <i class="fa-solid fa-tags"></i> Exclusive Dinajpur Deals
+            </span>
+            <h2 class="display-6 fw-bold text-white mb-0">Special Offers & Combo Bundles</h2>
+          </div>
+          <div class="p-2 px-3 rounded-pill border border-warning border-opacity-50" style="background:rgba(212,168,83,0.12);">
+            <span class="small text-white-50 me-2">Promo Code for 10% Off Cart:</span>
+            <strong style="color:var(--rk-accent); letter-spacing: 0.08em;">RAGIB10</strong>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Offer 1 -->
+          <div class="col-lg-4">
+            <div class="hero-glass-card p-4 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge rounded-pill text-dark fw-bold px-3 py-2" style="background:var(--rk-accent);">SAVE ৳150</span>
+                  <small class="text-white-50"><i class="fa-solid fa-users me-1"></i> Serves 3–4</small>
+                </div>
+                <h4 class="font-serif-display fw-bold text-white mb-2">Family Feast Platter</h4>
+                <p class="text-white-50 small mb-3">1 Supreme Pizza (12") + 2 Classic Chicken Burgers + 1 Chicken Chow Mein + 2 Fresh Lemonades.</p>
+              </div>
+              <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                <div>
+                  <span class="text-white-50 text-decoration-line-through small me-1">৳1,700</span>
+                  <span class="fs-4 fw-bold" style="color:var(--rk-accent);">৳1,550</span>
+                </div>
+                <button class="btn btn-sm btn-gold" onclick="addComboToCart('Family Feast Platter', 1550, 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80')">
+                  Claim Combo +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offer 2 -->
+          <div class="col-lg-4">
+            <div class="hero-glass-card p-4 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge rounded-pill bg-info text-dark fw-bold px-3 py-2">COUPLE'S NIGHT</span>
+                  <small class="text-white-50"><i class="fa-solid fa-heart text-danger me-1"></i> Serves 2</small>
+                </div>
+                <h4 class="font-serif-display fw-bold text-white mb-2">Couple's Pizza & Pasta</h4>
+                <p class="text-white-50 small mb-3">1 BBQ Chicken Pizza + 1 Creamy Alfredo Pasta + 1 Chocolate Lava Cake + 2 Cold Coffees.</p>
+              </div>
+              <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                <div>
+                  <span class="text-white-50 text-decoration-line-through small me-1">৳1,550</span>
+                  <span class="fs-4 fw-bold" style="color:var(--rk-accent);">৳1,380</span>
+                </div>
+                <button class="btn btn-sm btn-gold" onclick="addComboToCart('Couple\'s Pizza & Pasta Night', 1380, 'https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=600&q=80')">
+                  Claim Combo +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offer 3 -->
+          <div class="col-lg-4">
+            <div class="hero-glass-card p-4 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge rounded-pill bg-success text-white fw-bold px-3 py-2">STUDENT FAVORITE</span>
+                  <small class="text-white-50"><i class="fa-solid fa-bolt text-warning me-1"></i> Solo Combo</small>
+                </div>
+                <h4 class="font-serif-display fw-bold text-white mb-2">Student Burger & Shake</h4>
+                <p class="text-white-50 small mb-3">1 Classic Chicken Burger + Crispy Seasoned Fries + 1 Strawberry or Chocolate Milkshake.</p>
+              </div>
+              <div class="pt-3 border-top border-secondary border-opacity-25 d-flex align-items-center justify-content-between">
+                <div>
+                  <span class="text-white-50 text-decoration-line-through small me-1">৳420</span>
+                  <span class="fs-4 fw-bold" style="color:var(--rk-accent);">৳360</span>
+                </div>
+                <button class="btn btn-sm btn-gold" onclick="addComboToCart('Student Burger & Shake Deal', 360, 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80')">
+                  Claim Combo +
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TABLE RESERVATION SECTION ================= -->
+    <section id="reservation" class="py-5">
+      <div class="container py-4">
+        <div class="row g-5 align-items-center">
+          
+          <!-- Reservation Info Column -->
+          <div class="col-lg-5">
+            <span class="section-badge mb-3">
+              <i class="fa-solid fa-champagne-glasses"></i> Reserve Your Table
+            </span>
+            <h2 class="display-6 fw-bold mb-3">Book an Unforgettable Dining Experience</h2>
+            <p class="text-secondary mb-4">
+              Whether it's a romantic candlelit dinner, a joyful family gathering, or a birthday celebration in Dinajpur, reserve your table ahead and let our team prepare a warm welcome.
+            </p>
+
+            <!-- Opening Hours Highlight Box -->
+            <div class="p-4 rounded-4 text-white mb-4" style="background: var(--rk-primary); border-left: 5px solid var(--rk-accent);">
+              <h5 class="font-serif-display fw-bold mb-3" style="color:var(--rk-accent);">
+                <i class="fa-regular fa-clock me-2"></i>Opening Hours
+              </h5>
+              <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-25 small">
+                <span class="text-white-50">Saturday – Thursday</span>
+                <span class="fw-semibold text-white">11:00 AM – 10:00 PM</span>
+              </div>
+              <div class="d-flex justify-content-between pt-2 small">
+                <span class="text-white-50">Friday (Jummah Day)</span>
+                <span class="fw-semibold" style="color:var(--rk-accent);">2:00 PM – 11:00 PM</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;background:rgba(212,168,83,0.2);color:var(--rk-primary);">
+                <i class="fa-solid fa-phone-volume fs-5"></i>
+              </div>
+              <div>
+                <div class="small text-secondary">Need instant party booking assistance?</div>
+                <div class="fw-bold fs-5">+880 1700-000000</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Reservation Form Card -->
+          <div class="col-lg-7">
+            <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg border">
+              <h4 class="font-serif-display fw-bold mb-4">Table Reservation Form</h4>
+              <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Customer Name *</label>
+                    <input type="text" id="resName" class="form-control rounded-3 py-2" placeholder="e.g., Tanvir Ahmed" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Phone Number (BD) *</label>
+                    <input type="tel" id="resPhone" class="form-control rounded-3 py-2" placeholder="+880 17XX-XXXXXX" required />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Reservation Date *</label>
+                    <input type="date" id="resDate" class="form-control rounded-3 py-2" required />
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Reservation Time *</label>
+                    <select id="resTime" class="form-select rounded-3 py-2" required>
+                      <option value="12:30 PM">12:30 PM (Lunch)</option>
+                      <option value="02:00 PM">02:00 PM (Afternoon)</option>
+                      <option value="06:30 PM">06:30 PM (Evening)</option>
+                      <option value="08:00 PM" selected>08:00 PM (Prime Dinner)</option>
+                      <option value="09:00 PM">09:00 PM (Late Dinner)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Number of Guests *</label>
+                    <select id="resGuests" class="form-select rounded-3 py-2" required>
+                      <option value="2 Guests">2 Guests (Couple)</option>
+                      <option value="4 Guests" selected>4 Guests (Family)</option>
+                      <option value="6 Guests">6 Guests (Group)</option>
+                      <option value="8+ Guests">8+ Guests (VIP Table)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label small fw-semibold">Preferred Dining Zone</label>
+                    <select id="resArea" class="form-select rounded-3 py-2">
+                      <option value="Main Luxury Dining Hall">Main Luxury Dining Hall</option>
+                      <option value="Private Family Lounge">Private Family Lounge</option>
+                      <option value="Warm Café & Dessert Corner">Warm Café & Dessert Corner</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-semibold">Special Requests (Optional)</label>
+                    <textarea id="resNotes" class="form-control rounded-3" rows="2" placeholder="Birthday cake arrangement, high chair for kids, window seat..."></textarea>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn-gold w-100 py-3 fs-6">
+                      <i class="fa-solid fa-calendar-check"></i> Confirm Table Reservation
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Confirmation Alert Box (Hidden by default) -->
+              <div id="reservationSuccessBox" class="alert alert-success mt-4 rounded-4 d-none border-0 shadow-sm">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CURATED PREMIUM GALLERY SECTION ================= -->
+    <section id="gallery" class="py-5" style="background: #f2efe9;">
+      <div class="container py-4">
+        <div class="text-center max-w-2xl mx-auto mb-4">
+          <span class="section-badge mb-2">
+            <i class="fa-solid fa-camera-retro"></i> Visual Ambience & Culinary Art
+          </span>
+          <h2 class="display-6 fw-bold mb-2">Inside Ragib's Kitchen</h2>
+          <p class="text-secondary">A glimpse into our warm interior, signature food plating, and joyful family celebrations at Modern Mor.</p>
+        </div>
+
+        <!-- Gallery Filter Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+          <button class="cat-pill active" onclick="filterGallery('all', this)">All Moments</button>
+          <button class="cat-pill" onclick="filterGallery('interior', this)">Restaurant Interior</button>
+          <button class="cat-pill" onclick="filterGallery('food', this)">Food Photography</button>
+          <button class="cat-pill" onclick="filterGallery('events', this)">Special Events & Family</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="row g-4" id="galleryGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CUSTOMER REVIEWS & FAQ SECTION ================= -->
+    <section id="reviews" class="py-5">
+      <div class="container py-4">
+        <div class="row g-5">
+          
+          <!-- Left Column: Verified Customer Reviews -->
+          <div class="col-lg-7">
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-2">
+              <div>
+                <span class="section-badge mb-2"><i class="fa-solid fa-heart"></i> Guest Testimonials</span>
+                <h3 class="font-serif-display fw-bold mb-0">What Dinajpur Food Lovers Say</h3>
+              </div>
+              <button class="btn btn-sm btn-gold" data-bs-toggle="modal" data-bs-target="#writeReviewModal">
+                <i class="fa-solid fa-pen-to-square"></i> Write a Review
+              </button>
+            </div>
+
+            <div class="row g-3" id="customerReviewsList">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive FAQ Accordion -->
+          <div class="col-lg-5">
+            <span class="section-badge mb-2"><i class="fa-solid fa-circle-question"></i> Helpful Info</span>
+            <h3 class="font-serif-display fw-bold mb-4">Frequently Asked Questions</h3>
+
+            <div class="accordion accordion-flush bg-white rounded-4 shadow-sm border overflow-hidden" id="rkFaqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Which areas in Dinajpur do you deliver to?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#rkFaqAccordion">
+                  <div class="accordion-body text-secondary small">
+                    We offer fast 30–40 minute home delivery across all of <strong>Dinajpur Sadar</strong>, including Modern Mor, Lillymore, Munshipara, Kalitola, Balubari, Pulhat, and HSTU area. Delivery is only ৳50, and <strong>FREE on orders above ৳1,000</strong>!
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    What payment methods do you accept?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#rkFaqAccordion">
+                  <div class="accordion-body text-secondary small">
+                    We support <strong>Cash on Delivery (COD)</strong>, <strong>bKash</strong>, <strong>Nagad</strong>, and <strong>Debit/Credit Cards (Visa/Mastercard)</strong> both online and at our restaurant counter.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Is there a reservation fee for booking a table?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#rkFaqAccordion">
+                  <div class="accordion-body text-secondary small">
+                    Standard table reservations are completely free! We hold your table for up to 20 minutes past your reservation time. For large birthday or corporate events (15+ guests), call us directly.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Are all your meats and ingredients 100% Halal?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#rkFaqAccordion">
+                  <div class="accordion-body text-secondary small">
+                    Yes, 100%. Every cut of chicken and beef at Ragib's Kitchen is strictly Halal-sourced daily from trusted suppliers in Dinajpur.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section id="contact" class="py-5" style="background: #f2efe9;">
+      <div class="container py-4">
+        <div class="row g-4 align-items-stretch">
+          
+          <!-- Contact Details & Interactive Map Preview -->
+          <div class="col-lg-6">
+            <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span class="section-badge mb-2"><i class="fa-solid fa-location-dot"></i> Visit Us in Dinajpur</span>
+                <h3 class="font-serif-display fw-bold mb-3">Get in Touch with Ragib's Kitchen</h3>
+                <p class="text-secondary small mb-4">Located right at the vibrant hub of Modern Mor, Dinajpur Sadar. Drop by for a warm cup of coffee or a full family feast.</p>
+
+                <div class="d-flex flex-column gap-3 mb-4">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:42px;height:42px;background:var(--rk-primary);color:var(--rk-accent);">
+                      <i class="fa-solid fa-map-pin"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">Restaurant Address</h6>
+                      <small class="text-secondary">Modern Mor, Dinajpur Sadar, Dinajpur, Bangladesh</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:42px;height:42px;background:var(--rk-primary);color:var(--rk-accent);">
+                      <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">Phone & Hotline</h6>
+                      <small class="text-secondary">+880 1700-000000 (Demo)</small>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:42px;height:42px;background:var(--rk-primary);color:var(--rk-accent);">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">Email & Website</h6>
+                      <small class="text-secondary">hello@ragibskitchen.com • www.ragibskitchen.com</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Styled Interactive Map Card of Modern Mor, Dinajpur -->
+              <div class="rounded-4 overflow-hidden border position-relative" style="height: 210px; background: #1B263B;">
+                <iframe 
+                  title="Ragib's Kitchen Modern Mor Dinajpur Map"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=88.6250%2C25.6100%2C88.6500%2C25.6300&amp;layer=mapnik" 
+                  style="width:100%; height:100%; border:0; filter: contrast(1.05) opacity(0.9);">
+                </iframe>
+                <div class="position-absolute bottom-0 start-0 m-2 p-2 px-3 rounded-3 text-white small shadow" style="background:rgba(16,24,32,0.9); border:1px solid var(--rk-accent);">
+                  <i class="fa-solid fa-location-crosshairs text-warning me-1"></i> <strong>Ragib's Kitchen</strong> — Modern Mor, Dinajpur Sadar
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Message Form -->
+          <div class="col-lg-6">
+            <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border h-100">
+              <h4 class="font-serif-display fw-bold mb-2">Send Us a Message</h4>
+              <p class="text-secondary small mb-4">Have feedback, catering inquiries, or event questions? Fill out the form below.</p>
+
+              <form onsubmit="handleContactSubmit(event)">
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Your Name *</label>
+                  <input type="text" class="form-control rounded-3 py-2" placeholder="Enter your full name" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Email or Phone Number *</label>
+                  <input type="text" class="form-control rounded-3 py-2" placeholder="you@example.com or +8801..." required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Subject</label>
+                  <select class="form-select rounded-3 py-2">
+                    <option>General Inquiry</option>
+                    <option>Event & Catering Booking</option>
+                    <option>Order Feedback</option>
+                  </select>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label small fw-semibold">Your Message *</label>
+                  <textarea class="form-control rounded-3" rows="4" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-gold w-100 py-3">
+                  <i class="fa-solid fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End #customerStoreView -->
+
+
+  <!-- ================================================================= -->
+  <!--                     FULL ADMIN DASHBOARD VIEW                     -->
+  <!-- ================================================================= -->
+  <div id="adminPortalView" class="d-none" style="padding-top: 74px; min-height: 100vh; background: #f1f5f9;">
+    
+    <!-- Admin Login Gate -->
+    <div id="adminLoginGate" class="container py-5 my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="p-4 p-md-5 rounded-4 text-white shadow-lg" style="background: var(--rk-primary); border: 1px solid rgba(212,168,83,0.4);">
+            <div class="text-center mb-4">
+              <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width:60px;height:60px;background:rgba(212,168,83,0.18);color:var(--rk-accent);">
+                <i class="fa-solid fa-user-shield fs-3"></i>
+              </div>
+              <h3 class="font-serif-display fw-bold">Admin Portal Login</h3>
+              <p class="text-white-50 small mb-0">Ragib's Kitchen Management System</p>
+            </div>
+            <form onsubmit="handleAdminLogin(event)">
+              <div class="mb-3">
+                <label class="form-label small text-white-50">Admin Email</label>
+                <input type="email" id="adminEmailInput" class="form-control bg-dark text-white border-secondary" value="admin@ragibskitchen.com" required />
+              </div>
+              <div class="mb-4">
+                <label class="form-label small text-white-50">Password</label>
+                <input type="password" id="adminPassInput" class="form-control bg-dark text-white border-secondary" value="admin123" required />
+              </div>
+              <button type="submit" class="btn-gold w-100 py-2 mb-2">
+                <i class="fa-solid fa-unlock-keyhole"></i> Sign In to Dashboard
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-light w-100 rounded-pill mt-1" onclick="switchAppView('store')">
+                Return to Customer Storefront
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authenticated Admin Dashboard Workspace -->
+    <div id="adminWorkspace" class="container-fluid d-none">
+      <div class="row">
+        
+        <!-- Sidebar Navigation -->
+        <div class="col-lg-3 col-xl-2 admin-sidebar p-3">
+          <div class="p-2 mb-3 border-bottom border-secondary border-opacity-25">
+            <small class="text-uppercase text-white-50 d-block" style="font-size:0.7rem;letter-spacing:0.1em;">Logged in as</small>
+            <div class="fw-bold text-white">Ragib Hosen (Owner)</div>
+            <small style="color:var(--rk-accent);">admin@ragibskitchen.com</small>
+          </div>
+
+          <button class="admin-nav-btn active" onclick="switchAdminTab('overview', this)">
+            <i class="fa-solid fa-chart-pie"></i> Dashboard Overview
+          </button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('orders', this)">
+            <i class="fa-solid fa-receipt"></i> Manage Orders
+            <span class="badge rounded-pill bg-warning text-dark ms-auto" id="adminOrderBadge">0</span>
+          </button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('reservations', this)">
+            <i class="fa-solid fa-calendar-check"></i> Reservations
+            <span class="badge rounded-pill bg-info text-dark ms-auto" id="adminResBadge">0</span>
+          </button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('menu', this)">
+            <i class="fa-solid fa-utensils"></i> Food Menu & Items
+          </button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('reviews', this)">
+            <i class="fa-solid fa-star"></i> Customer Reviews
+          </button>
+
+          <hr class="border-secondary my-3" />
+          <button class="admin-nav-btn text-warning" onclick="switchAppView('store')">
+            <i class="fa-solid fa-store"></i> View Live Website
+          </button>
+        </div>
+
+        <!-- Main Admin Content Panel -->
+        <div class="col-lg-9 col-xl-10 p-4">
+          
+          <!-- TAB 1: OVERVIEW & STATISTICS -->
+          <div id="adminTab-overview" class="admin-tab-pane">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+              <div>
+                <h3 class="fw-bold font-serif-display mb-1">Restaurant Performance Overview</h3>
+                <p class="text-secondary small mb-0">Real-time synchronization with customer orders, reservations, and menu items.</p>
+              </div>
+              <span class="badge bg-dark text-warning px-3 py-2 rounded-pill">Currency: BDT (৳)</span>
+            </div>
+
+            <!-- KPI Stat Cards -->
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-white p-4 rounded-4 shadow-sm border">
+                  <div class="text-secondary small fw-semibold mb-1">Total Revenue</div>
+                  <div class="fs-3 fw-bold text-dark" id="statTotalRevenue">৳0</div>
+                  <small class="text-success"><i class="fa-solid fa-arrow-trend-up me-1"></i>Live Storefront Sales</small>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-white p-4 rounded-4 shadow-sm border">
+                  <div class="text-secondary small fw-semibold mb-1">Total Orders</div>
+                  <div class="fs-3 fw-bold text-dark" id="statTotalOrders">0</div>
+                  <small class="text-primary">Across 7 Order Statuses</small>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-white p-4 rounded-4 shadow-sm border">
+                  <div class="text-secondary small fw-semibold mb-1">Table Reservations</div>
+                  <div class="fs-3 fw-bold text-dark" id="statTotalReservations">0</div>
+                  <small class="text-info">Dine-in & Family Bookings</small>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-white p-4 rounded-4 shadow-sm border">
+                  <div class="text-secondary small fw-semibold mb-1">Active Menu Items</div>
+                  <div class="fs-3 fw-bold text-dark" id="statTotalMenu">19</div>
+                  <small class="text-warning">6 Food Categories</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Store Profile Info -->
+            <div class="bg-white p-4 rounded-4 shadow-sm border">
+              <h5 class="fw-bold font-serif-display mb-3">Restaurant Information & Tech Stack</h5>
+              <div class="row g-3 small">
+                <div class="col-md-4">
+                  <strong>Restaurant Name:</strong> Ragib's Kitchen<br/>
+                  <strong>Owner:</strong> Ragib Hosen<br/>
+                  <strong>Location:</strong> Modern Mor, Dinajpur Sadar
+                </div>
+                <div class="col-md-4">
+                  <strong>Opening Hours:</strong><br/>
+                  Sat–Thu: 11:00 AM – 10:00 PM<br/>
+                  Friday: 2:00 PM – 11:00 PM
+                </div>
+                <div class="col-md-4">
+                  <strong>Payment Gateways Active:</strong><br/>
+                  Cash on Delivery, bKash, Nagad, Debit/Credit Card
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: MANAGE ORDERS -->
+          <div id="adminTab-orders" class="admin-tab-pane d-none">
+            <h3 class="fw-bold font-serif-display mb-1">Manage Customer Orders</h3>
+            <p class="text-secondary small mb-4">Change any order status below—updates reflect immediately in the Customer Order Tracker.</p>
+            <div class="bg-white rounded-4 shadow-sm border p-3 table-responsive">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Payment</th>
+                    <th>Total</th>
+                    <th>Order Status (Live Update)</th>
+                  </tr>
+                </thead>
+                <tbody id="adminOrdersTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 3: MANAGE RESERVATIONS -->
+          <div id="adminTab-reservations" class="admin-tab-pane d-none">
+            <h3 class="fw-bold font-serif-display mb-1">Manage Table Reservations</h3>
+            <p class="text-secondary small mb-4">Update status between Pending, Confirmed, Completed, and Cancelled.</p>
+            <div class="bg-white rounded-4 shadow-sm border p-3 table-responsive">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>ID</th>
+                    <th>Guest Name & Phone</th>
+                    <th>Date & Time</th>
+                    <th>Guests & Area</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="adminReservationsTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 4: MANAGE MENU ITEMS -->
+          <div id="adminTab-menu" class="admin-tab-pane d-none">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+              <div>
+                <h3 class="fw-bold font-serif-display mb-1">Manage Food Menu Items</h3>
+                <p class="text-secondary small mb-0">Add a new dish or remove items—changes appear immediately on the storefront.</p>
+              </div>
+            </div>
+
+            <!-- Add New Food Form -->
+            <div class="bg-white p-4 rounded-4 shadow-sm border mb-4">
+              <h6 class="fw-bold mb-3"><i class="fa-solid fa-plus-circle text-warning me-1"></i> Add New Dish to Menu</h6>
+              <form onsubmit="handleAdminAddMenu(event)" class="row g-3">
+                <div class="col-md-3">
+                  <input type="text" id="newMenuName" class="form-control" placeholder="Dish Name" required />
+                </div>
+                <div class="col-md-2">
+                  <select id="newMenuCategory" class="form-select" required>
+                    <option value="Burgers">Burgers</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Desserts">Desserts</option>
+                    <option value="Beverages">Beverages</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <input type="number" id="newMenuPrice" class="form-control" placeholder="Price (৳)" required />
+                </div>
+                <div class="col-md-3">
+                  <input type="url" id="newMenuImg" class="form-control" placeholder="Image URL (Unsplash)" />
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn-gold w-100 py-2">Add Dish</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="bg-white rounded-4 shadow-sm border p-3 table-responsive">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Dish</th>
+                    <th>Category</th>
+                    <th>Price (BDT)</th>
+                    <th class="text-end">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="adminMenuTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 5: MANAGE REVIEWS -->
+          <div id="adminTab-reviews" class="admin-tab-pane d-none">
+            <h3 class="fw-bold font-serif-display mb-3">Customer Reviews Moderation</h3>
+            <div class="row g-3" id="adminReviewsList">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="text-white pt-5 pb-4" style="background: var(--rk-primary); border-top: 2px solid rgba(212,168,83,0.3);">
+    <div class="container">
+      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:40px;height:40px;background:var(--rk-accent);color:#101820;">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <span class="font-serif-display fw-bold fs-4">RAGIB'S <span style="color:var(--rk-accent);">KITCHEN</span></span>
+          </div>
+          <p class="text-white-50 small mb-3">
+            Taste Beyond Expectations. A modern premium restaurant & café at Modern Mor, Dinajpur Sadar serving fresh ingredients and unforgettable flavors since 2024.
+          </p>
+          <div class="d-flex gap-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-gold rounded-circle" style="width:38px;height:38px;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-gold rounded-circle" style="width:38px;height:38px;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-gold rounded-circle" style="width:38px;height:38px;"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h6 class="fw-bold mb-3" style="color:var(--rk-accent);">Quick Links</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="#hero" class="text-white-50 text-decoration-none" onclick="switchAppView('store')">Home</a></li>
+            <li><a href="#about" class="text-white-50 text-decoration-none" onclick="switchAppView('store')">About Us</a></li>
+            <li><a href="#menu" class="text-white-50 text-decoration-none" onclick="switchAppView('store')">Full Menu</a></li>
+            <li><a href="#reservation" class="text-white-50 text-decoration-none" onclick="switchAppView('store')">Book a Table</a></li>
+            <li><a href="#gallery" class="text-white-50 text-decoration-none" onclick="switchAppView('store')">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h6 class="fw-bold mb-3" style="color:var(--rk-accent);">Opening Hours</h6>
+          <ul class="list-unstyled small text-white-50 d-flex flex-column gap-2">
+            <li><strong class="text-white">Sat – Thu:</strong> 11:00 AM – 10:00 PM</li>
+            <li><strong class="text-white">Friday:</strong> 2:00 PM – 11:00 PM</li>
+            <li><strong class="text-white">Delivery Area:</strong> Dinajpur Sadar</li>
+            <li><strong class="text-white">Owner:</strong> Ragib Hosen</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h6 class="fw-bold mb-3" style="color:var(--rk-accent);">We Accept</h6>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-secondary bg-opacity-25 border border-secondary text-white px-3 py-2">Cash on Delivery</span>
+            <span class="badge text-white px-3 py-2" style="background:#e2136e;">bKash</span>
+            <span class="badge text-white px-3 py-2" style="background:#f7941d;">Nagad</span>
+            <span class="badge bg-primary text-white px-3 py-2">Visa / Mastercard</span>
+          </div>
+          <small class="text-white-50 d-block" style="font-size:0.72rem;">
+            * Demo Portfolio Disclaimer: All menu prices, contact details, and business profiles are created for demonstration purposes.
+          </small>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 small text-white-50">
+        <div>© 2024–2026 <strong>Ragib's Kitchen</strong> (Owner: Ragib Hosen). All rights reserved.</div>
+        <div>Modern Mor, Dinajpur Sadar, Dinajpur, Bangladesh</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================================= -->
+  <!--               SLIDE-OVER OFFCANVAS SHOPPING CART                  -->
+  <!-- ================================================================= -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" style="width: min(420px, 100vw);">
+    <div class="offcanvas-header text-white" style="background: var(--rk-primary);">
+      <h5 class="offcanvas-title font-serif-display fw-bold">
+        <i class="fa-solid fa-bag-shopping me-2" style="color:var(--rk-accent);"></i>Your Order Bag
+      </h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-3" style="background: var(--rk-bg);">
+      
+      <!-- Cart Items List -->
+      <div id="cartItemsContainer" class="overflow-auto pe-1" style="max-height: 52vh;">
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Cart Summary & Promo & Checkout Button -->
+      <div class="bg-white p-3 rounded-4 shadow-sm border mt-3">
+        <!-- Promo Code Input -->
+        <div class="input-group input-group-sm mb-3">
+          <input type="text" id="promoCodeInput" class="form-control" placeholder="Promo code (Try RAGIB10)" />
+          <button class="btn btn-dark fw-semibold" type="button" onclick="applyPromoCode()">Apply</button>
+        </div>
+
+        <div class="d-flex justify-content-between small text-secondary mb-1">
+          <span>Subtotal</span>
+          <span id="cartSubtotalText" class="fw-semibold text-dark">৳0</span>
+        </div>
+        <div class="d-flex justify-content-between small text-success mb-1 d-none" id="cartDiscountRow">
+          <span>Discount (RAGIB10 - 10%)</span>
+          <span id="cartDiscountText">-৳0</span>
+        </div>
+        <div class="d-flex justify-content-between small text-secondary mb-2">
+          <span>Delivery Fee (Dinajpur Sadar)</span>
+          <span id="cartDeliveryText" class="fw-semibold text-dark">৳50</span>
+        </div>
+        <div class="d-flex justify-content-between fw-bold fs-5 pt-2 border-top mb-3">
+          <span>Total Payable</span>
+          <span id="cartGrandTotalText" style="color:var(--rk-primary);">৳0</span>
+        </div>
+
+        <button class="btn-gold w-100 py-3" onclick="openCheckoutModal()">
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================= -->
+  <!--               MODALS (QUICK VIEW, CHECKOUT, TRACKER, LIGHTBOX)    -->
+  <!-- ================================================================= -->
+
+  <!-- 1. Food Item Quick View Modal -->
+  <div class="modal fade" id="foodQuickViewModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 overflow-hidden border-0 shadow-lg">
+        <div id="quickViewModalContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Multi-Step Checkout Modal with Bangladeshi Payments -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 overflow-hidden border-0 shadow-lg">
+        <div class="modal-header text-white" style="background: var(--rk-primary);">
+          <h5 class="modal-title font-serif-display fw-bold">
+            <i class="fa-solid fa-shield-halved me-2" style="color:var(--rk-accent);"></i>Complete Your Order — Ragib's Kitchen
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" style="background: var(--rk-bg);">
+          <form id="checkoutForm" onsubmit="submitFinalOrder(event)">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Full Name *</label>
+                <input type="text" id="chkName" class="form-control" placeholder="Your Full Name" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Mobile Number (Dinajpur) *</label>
+                <input type="tel" id="chkPhone" class="form-control" placeholder="+880 17XX-XXXXXX" required />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label small fw-semibold">Order Type *</label>
+                <select id="chkOrderType" class="form-select">
+                  <option value="Home Delivery">Home Delivery (Dinajpur Sadar)</option>
+                  <option value="Takeaway">Takeaway (Self Pickup)</option>
+                  <option value="Dine-in Pre-Order">Dine-in Pre-Order</option>
+                </select>
+              </div>
+              <div class="col-md-8">
+                <label class="form-label small fw-semibold">Delivery Address / Area in Dinajpur Sadar *</label>
+                <input type="text" id="chkAddress" class="form-control" placeholder="House/Road, Modern Mor, Munshipara, HSTU..." required />
+              </div>
+
+              <!-- Payment Method Selector -->
+              <div class="col-12 mt-3">
+                <label class="form-label small fw-semibold d-block mb-2">Select Payment Method *</label>
+                <div class="row g-2">
+                  <div class="col-6 col-md-3">
+                    <div class="pay-method-card selected text-center" onclick="selectPaymentMethod('Cash on Delivery', this)">
+                      <i class="fa-solid fa-money-bill-wave fs-4 text-success mb-1"></i>
+                      <div class="fw-bold small">Cash on Delivery</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="pay-method-card text-center" onclick="selectPaymentMethod('bKash', this)">
+                      <i class="fa-solid fa-mobile-screen-button fs-4 mb-1" style="color:#e2136e;"></i>
+                      <div class="fw-bold small">bKash</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="pay-method-card text-center" onclick="selectPaymentMethod('Nagad', this)">
+                      <i class="fa-solid fa-wallet fs-4 mb-1" style="color:#f7941d;"></i>
+                      <div class="fw-bold small">Nagad</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-3">
+                    <div class="pay-method-card text-center" onclick="selectPaymentMethod('Debit/Credit Card', this)">
+                      <i class="fa-regular fa-credit-card fs-4 text-primary mb-1"></i>
+                      <div class="fw-bold small">Card</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dynamic Mobile Banking / Card Box -->
+              <div id="mobilePaymentFields" class="col-12 d-none">
+                <div class="p-3 rounded-3 bg-white border mt-2">
+                  <div class="small fw-semibold mb-2" id="mobilePayInstruction">Send Money / Merchant Payment to: <strong>+880 1700-000000</strong></div>
+                  <input type="text" id="chkTrxId" class="form-control form-control-sm" placeholder="Enter Transaction ID (e.g., BKS9821X) or Last 4 Digits" />
+                </div>
+              </div>
+
+              <div class="col-12 mt-4">
+                <button type="submit" class="btn-gold w-100 py-3 fs-6">
+                  <i class="fa-solid fa-circle-check"></i> Place Order (<span id="chkFinalBtnAmount">৳0</span>)
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Live Order Tracker Modal -->
+  <div class="modal fade" id="orderTrackerModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 overflow-hidden border-0 shadow-lg">
+        <div class="modal-header text-white" style="background: var(--rk-primary);">
+          <h5 class="modal-title font-serif-display fw-bold">
+            <i class="fa-solid fa-motorcycle me-2" style="color:var(--rk-accent);"></i>Live Order Tracking
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4" id="orderTrackerBody">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Write Customer Review Modal -->
+  <div class="modal fade" id="writeReviewModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 overflow-hidden border-0 shadow-lg">
+        <div class="modal-header text-white" style="background: var(--rk-primary);">
+          <h5 class="modal-title font-serif-display fw-bold">Share Your Experience</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="handleNewReviewSubmit(event)">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Your Name *</label>
+              <input type="text" id="revName" class="form-control" placeholder="e.g., Nusrat Jahan" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Rating *</label>
+              <select id="revRating" class="form-select">
+                <option value="5">★★★★★ (5/5 - Extraordinary!)</option>
+                <option value="4">★★★★☆ (4/5 - Very Good)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Your Review *</label>
+              <textarea id="revComment" class="form-control" rows="3" placeholder="Tell us about your favorite dish and service..." required></textarea>
+            </div>
+            <button type="submit" class="btn-gold w-100 py-2">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Gallery Lightbox Modal -->
+  <div class="modal fade" id="galleryLightboxModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-white rounded-4 overflow-hidden border border-secondary">
+        <div class="modal-header border-0">
+          <h6 class="modal-title font-serif-display" id="lightboxCaption">Ragib's Kitchen Gallery</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0 text-center">
+          <img id="lightboxImage" src="" alt="Gallery Preview" class="w-100 object-fit-cover" style="max-height: 75vh;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="rkToastContainer"></div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ================================================================= -->
+  <!--                     CORE APPLICATION JAVASCRIPT                   -->
+  <!-- ================================================================= -->
+  <script>
+    // 1. INITIAL AUTHENTIC MENU DATA (All 19 Official Ragib's Kitchen Items)
+    const defaultMenuData = [
+      // Burgers
+      {
+        id: 101,
+        name: "Classic Chicken Burger",
+        category: "Burgers",
+        price: 250,
+        rating: 4.8,
+        tag: "Popular",
+        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80",
+        desc: "Crispy golden chicken fillet, fresh lettuce, tomatoes, and signature house mayo in a toasted brioche bun."
+      },
+      {
+        id: 102,
+        name: "Double Cheese Burger",
+        category: "Burgers",
+        price: 350,
+        rating: 4.9,
+        tag: "Bestseller",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80",
+        desc: "Double flame-grilled patties layered with double melted cheddar cheese, caramelized onions, and smoky sauce."
+      },
+      {
+        id: 103,
+        name: "Crispy Beef Burger",
+        category: "Burgers",
+        price: 380,
+        rating: 4.9,
+        tag: "Chef's Pick",
+        image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=700&q=80",
+        desc: "Juicy seasoned beef patty with a crispy crust, pickled jalapeños, aged cheddar, and garlic aioli."
+      },
+      // Pizza
+      {
+        id: 201,
+        name: "Chicken Cheese Pizza",
+        category: "Pizza",
+        price: 550,
+        rating: 4.8,
+        tag: "Family Favorite",
+        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80",
+        desc: "Artisan hand-tossed crust topped with herb-roasted chicken chunks, rich marinara, and 100% mozzarella cheese."
+      },
+      {
+        id: 202,
+        name: "BBQ Chicken Pizza",
+        category: "Pizza",
+        price: 650,
+        rating: 4.9,
+        tag: "Smoky & Sweet",
+        image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=700&q=80",
+        desc: "Smoky BBQ glazed chicken, red onions, sweet corn, bell peppers, and melted mozzarella swirl."
+      },
+      {
+        id: 203,
+        name: "Supreme Pizza",
+        category: "Pizza",
+        price: 750,
+        rating: 5.0,
+        tag: "Signature 12\"",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80",
+        desc: "Our crown jewel pizza loaded with spicy chicken, beef pepperoni, black olives, mushrooms, capsicum & extra cheese."
+      },
+      // Pasta
+      {
+        id: 301,
+        name: "Creamy Alfredo Pasta",
+        category: "Pasta",
+        price: 320,
+        rating: 4.9,
+        tag: "Rich & Creamy",
+        image: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=700&q=80",
+        desc: "Penne pasta tossed in velvety parmesan cream sauce with grilled chicken strips, garlic, and Italian herbs."
+      },
+      {
+        id: 302,
+        name: "Chicken Spicy Pasta",
+        category: "Pasta",
+        price: 300,
+        rating: 4.7,
+        tag: "Spicy Kick",
+        image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=700&q=80",
+        desc: "Fiery arrabbiata tomato sauce, tender spiced chicken, chili flakes, fresh basil, and melted mozzarella."
+      },
+      {
+        id: 303,
+        name: "Mushroom Pasta",
+        category: "Pasta",
+        price: 350,
+        rating: 4.8,
+        tag: "Gourmet",
+        image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=700&q=80",
+        desc: "Sautéed button mushrooms, roasted garlic, olive oil, and creamy white herb sauce topped with parmesan."
+      },
+      // Main Course
+      {
+        id: 401,
+        name: "Grilled Chicken Steak",
+        category: "Main Course",
+        price: 450,
+        rating: 5.0,
+        tag: "Chef's Signature",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80",
+        desc: "Flame-grilled marinated chicken breast steak served with peppercorn gravy, buttered vegetables, and mashed potatoes."
+      },
+      {
+        id: 402,
+        name: "Chicken Fried Rice",
+        category: "Main Course",
+        price: 280,
+        rating: 4.8,
+        tag: "Classic",
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=700&q=80",
+        desc: "Fragrant basmati & chinigura blend wok-tossed with tender chicken, farm eggs, spring onions, and sesame."
+      },
+      {
+        id: 403,
+        name: "Chicken Chow Mein",
+        category: "Main Course",
+        price: 250,
+        rating: 4.8,
+        tag: "Wok Special",
+        image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=700&q=80",
+        desc: "Stir-fried artisan noodles with julienned chicken, crisp bell peppers, carrots, and savory house soy glaze."
+      },
+      // Desserts
+      {
+        id: 501,
+        name: "Chocolate Brownie",
+        category: "Desserts",
+        price: 180,
+        rating: 4.9,
+        tag: "Warm Fudge",
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80",
+        desc: "Decadent Belgian dark chocolate walnut brownie served warm with rich chocolate fudge drizzle."
+      },
+      {
+        id: 502,
+        name: "Chocolate Lava Cake",
+        category: "Desserts",
+        price: 220,
+        rating: 5.0,
+        tag: "Must Try",
+        image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=700&q=80",
+        desc: "Warm sponge cake with a molten dark chocolate center that flows on the first spoonful."
+      },
+      {
+        id: 503,
+        name: "Vanilla Ice Cream",
+        category: "Desserts",
+        price: 120,
+        rating: 4.7,
+        tag: "Kids Favorite",
+        image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=700&q=80",
+        desc: "Two generous scoops of Madagascar vanilla bean ice cream garnished with wafer roll and caramel."
+      },
+      // Beverages
+      {
+        id: 601,
+        name: "Strawberry Milkshake",
+        category: "Beverages",
+        price: 150,
+        rating: 4.8,
+        tag: "Creamy",
+        image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=700&q=80",
+        desc: "Blended fresh strawberries, chilled full-cream milk, and vanilla ice cream topped with whipped cream."
+      },
+      {
+        id: 602,
+        name: "Chocolate Milkshake",
+        category: "Beverages",
+        price: 170,
+        rating: 4.9,
+        tag: "Choco Lover",
+        image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80",
+        desc: "Thick Dutch cocoa and chocolate ice cream shake finished with chocolate shavings."
+      },
+      {
+        id: 603,
+        name: "Fresh Lemonade",
+        category: "Beverages",
+        price: 100,
+        rating: 4.8,
+        tag: "Refreshing",
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80",
+        desc: "Zesty Dinajpur lime juice, garden mint leaves, crushed ice, and a hint of black salt."
+      },
+      {
+        id: 604,
+        name: "Cold Coffee",
+        category: "Beverages",
+        price: 180,
+        rating: 4.9,
+        tag: "Café Signature",
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80",
+        desc: "Rich espresso blended with chilled creamy milk, vanilla cream, and caramel drizzle."
+      }
+    ];
+
+    // 2. GALLERY DATA
+    const galleryItems = [
+      { category: 'interior', title: 'Main Luxury Dining Hall', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80' },
+      { category: 'food', title: 'Chef Signature Grilled Steak', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80' },
+      { category: 'events', title: 'Family Dinner Celebrations', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80' },
+      { category: 'food', title: 'Wood-Fired Supreme Pizza', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80' },
+      { category: 'interior', title: 'Warm Café & Espresso Lounge', img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80' },
+      { category: 'events', title: 'Birthday & Group Hospitality', img: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80' }
+    ];
+
+    // 3. STATE MANAGEMENT WITH LOCALSTORAGE
+    let menuItems = JSON.parse(localStorage.getItem('rk_menu')) || defaultMenuData;
+    let cart = JSON.parse(localStorage.getItem('rk_cart')) || [];
+    let orders = JSON.parse(localStorage.getItem('rk_orders')) || [
+      {
+        id: 'RK-2026-841',
+        customer: 'Mahmudul Hasan',
+        phone: '+880 1712-345678',
+        address: 'Modern Mor, Dinajpur Sadar',
+        orderType: 'Home Delivery',
+        payment: 'bKash',
+        items: '1x Grilled Chicken Steak, 1x Cold Coffee',
+        total: 630,
+        status: 'Preparing',
+        time: 'Today, 7:45 PM'
+      }
+    ];
+    let reservations = JSON.parse(localStorage.getItem('rk_reservations')) || [
+      {
+        id: 'RES-901',
+        name: 'Farhana Yasmin',
+        phone: '+880 1819-001122',
+        date: '2026-11-14',
+        time: '08:00 PM',
+        guests: '4 Guests',
+        area: 'Private Family Lounge',
+        status: 'Confirmed'
+      }
+    ];
+    let reviews = JSON.parse(localStorage.getItem('rk_reviews')) || [
+      { name: 'Sadia Afrin', rating: 5, date: 'Nov 2026', text: 'The Grilled Chicken Steak and Cold Coffee at Ragib\'s Kitchen are unmatched in Dinajpur! Super cozy ambiance at Modern Mor.' },
+      { name: 'Rafiqul Islam', rating: 5, date: 'Nov 2026', text: 'Ordered the Supreme Pizza and Double Cheese Burger online. Arrived piping hot in 25 minutes via bKash payment.' },
+      { name: 'Dr. Kamrul Hasan', rating: 5, date: 'Oct 2026', text: 'Booked a family table for 6. Ragib Hosen and his staff welcomed us so warmly. Truly Taste Beyond Expectations!' }
+    ];
+
+    let currentCategory = 'All';
+    let appliedPromo = false;
+    let selectedPayment = 'Cash on Delivery';
+    let isAdminLoggedIn = false;
+
+    const ORDER_STATUSES = [
+      'Pending',
+      'Confirmed',
+      'Preparing',
+      'Ready for Delivery',
+      'Out for Delivery',
+      'Delivered',
+      'Cancelled'
+    ];
+
+    function saveState() {
+      localStorage.setItem('rk_menu', JSON.stringify(menuItems));
+      localStorage.setItem('rk_cart', JSON.stringify(cart));
+      localStorage.setItem('rk_orders', JSON.stringify(orders));
+      localStorage.setItem('rk_reservations', JSON.stringify(reservations));
+      localStorage.setItem('rk_reviews', JSON.stringify(reviews));
+    }
+
+    // 4. TOAST NOTIFICATION HELPER
+    function showToast(message, icon = 'fa-circle-check') {
+      const container = document.getElementById('rkToastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'rk-toast';
+      toast.innerHTML = `
+        <i class="fa-solid ${icon} fs-5" style="color:var(--rk-accent);"></i>
+        <div class="small fw-medium">${message}</div>
+      `;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(40px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3200);
+    }
+
+    // 5. RENDER FOOD MENU
+    function filterMenuByCategory(category, btnEl) {
+      currentCategory = category;
+      document.querySelectorAll('#menuCategoryPills .cat-pill').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderMenuCards();
+    }
+
+    function renderMenuCards() {
+      const searchVal = (document.getElementById('menuSearchInput')?.value || '').toLowerCase();
+      const sortVal = document.getElementById('menuSortSelect')?.value || 'popular';
+      const grid = document.getElementById('menuGridContainer');
+
+      let filtered = menuItems.filter(item => {
+        const matchesCat = currentCategory === 'All' || item.category === currentCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal) || item.category.toLowerCase().includes(searchVal);
+        return matchesCat && matchesSearch;
+      });
+
+      if (sortVal === 'low-high') filtered.sort((a, b) => a.price - b.price);
+      if (sortVal === 'high-low') filtered.sort((a, b) => b.price - a.price);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <i class="fa-solid fa-utensils fs-1 text-secondary mb-3"></i>
+            <h5>No dishes found matching your search</h5>
+            <p class="text-secondary small">Try clearing the search filter or selecting "All Items".</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="food-card">
+            <div class="food-img-wrap">
+              <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/600x400/1B263B/D4A853?text=${encodeURIComponent(item.name)}'" />
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="badge rounded-pill text-dark fw-bold px-3 py-1" style="background:var(--rk-accent);font-size:0.72rem;">
+                  ${item.tag || item.category}
+                </span>
+              </div>
+              <button class="btn btn-sm btn-light rounded-circle position-absolute top-0 end-0 m-3 shadow" style="width:36px;height:36px;" title="Quick View" onclick="openQuickView(${item.id})">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <small class="text-uppercase fw-bold text-secondary" style="font-size:0.7rem;letter-spacing:0.06em;">${item.category}</small>
+                  <small class="fw-semibold text-warning"><i class="fa-solid fa-star me-1"></i>${item.rating || '4.9'}</small>
+                </div>
+                <h5 class="font-serif-display fw-bold mb-1 text-dark" style="font-size:1.12rem;">${item.name}</h5>
+                <p class="text-secondary small mb-3" style="font-size:0.82rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  ${item.desc}
+                </p>
+              </div>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <div>
+                  <small class="text-secondary d-block" style="font-size:0.68rem;">Price</small>
+                  <span class="fs-5 fw-bold" style="color:var(--rk-primary);">৳${item.price}</span>
+                </div>
+                <button class="btn btn-sm btn-gold px-3 py-2" onclick="addToCart(${item.id})">
+                  <i class="fa-solid fa-plus"></i> Add to Bag
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 6. QUICK VIEW MODAL
+    function openQuickView(id) {
+      const item = menuItems.find(m => m.id === id);
+      if (!item) return;
+      const content = document.getElementById('quickViewModalContent');
+      content.innerHTML = `
+        <div class="position-relative" style="height:250px;">
+          <img src="${item.image}" alt="${item.name}" class="w-100 h-100 object-fit-cover" onerror="this.src='https://placehold.co/600x400/1B263B/D4A853?text=Dish'" />
+          <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 bg-dark p-2 rounded-circle" data-bs-dismiss="modal"></button>
+          <span class="badge rounded-pill text-dark fw-bold position-absolute bottom-0 start-0 m-3 px-3 py-2" style="background:var(--rk-accent);">
+            ${item.category} • ★ ${item.rating || '4.9'}
+          </span>
+        </div>
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h4 class="font-serif-display fw-bold mb-0">${item.name}</h4>
+            <span class="fs-4 fw-bold" style="color:var(--rk-primary);">৳${item.price}</span>
+          </div>
+          <p class="text-secondary small mb-3">${item.desc}</p>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Spice / Preparation Preference</label>
+            <select class="form-select form-select-sm rounded-3">
+              <option>Regular Chef's Signature</option>
+              <option>Mild / Kid-Friendly</option>
+              <option>Extra Spicy (Naga / Chili Boost)</option>
+            </select>
+          </div>
+          <button class="btn-gold w-100 py-2" onclick="addToCart(${item.id}); closeBsModal('foodQuickViewModal');">
+            <i class="fa-solid fa-bag-shopping"></i> Add to Bag — ৳${item.price}
+          </button>
+        </div>
+      `;
+      openBsModal('foodQuickViewModal');
+    }
+
+    // 6.5 SAFE BOOTSTRAP MODAL & OFFCANVAS HELPERS (Prevents duplicate backdrop / disappearing content bugs)
+    function openBsModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (!el) return;
+      const modal = bootstrap.Modal.getOrCreateInstance(el);
+      modal.show();
+    }
+
+    function closeBsModal(modalId) {
+      const el = document.getElementById(modalId);
+      if (!el) return;
+      const modal = bootstrap.Modal.getInstance(el);
+      if (modal) modal.hide();
+    }
+
+    function closeMobileNavbarIfOpen() {
+      const navCollapse = document.getElementById('rkNavbarContent');
+      if (navCollapse && navCollapse.classList.contains('show')) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+        if (bsCollapse) bsCollapse.hide();
+      }
+    }
+
+    function openOrderTrackerModal(orderId) {
+      closeMobileNavbarIfOpen();
+      renderOrderTracker(orderId);
+      openBsModal('orderTrackerModal');
+    }
+
+    // 7. CART OPERATIONS
+    function addToCart(id) {
+      const item = menuItems.find(m => m.id === id);
+      if (!item) return;
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: item.id, name: item.name, price: item.price, image: item.image, qty: 1 });
+      }
+      saveState();
+      updateCartUI();
+      showToast(`Added <strong>${item.name}</strong> (৳${item.price}) to your bag!`);
+    }
+
+    function quickAddByName(dishName) {
+      const item = menuItems.find(m => m.name.toLowerCase() === dishName.toLowerCase());
+      if (item) addToCart(item.id);
+    }
+
+    function addComboToCart(title, price, img) {
+      const comboId = Date.now();
+      cart.push({ id: comboId, name: title, price: price, image: img, qty: 1 });
+      saveState();
+      updateCartUI();
+      showToast(`Claimed <strong>${title}</strong> (৳${price})!`);
+      const offcanvasEl = document.getElementById('cartOffcanvas');
+      if (offcanvasEl) {
+        bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl).show();
+      }
+    }
+
+    function updateCartQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== id);
+      }
+      saveState();
+      updateCartUI();
+    }
+
+    function applyPromoCode() {
+      const input = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      if (input === 'RAGIB10') {
+        appliedPromo = true;
+        updateCartUI();
+        showToast('Promo code <strong>RAGIB10</strong> applied! 10% discount unlocked.', 'fa-tags');
+      } else {
+        showToast('Invalid promo code. Try <strong>RAGIB10</strong>!', 'fa-circle-exclamation');
+      }
+    }
+
+    function getCartTotals() {
+      const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const discount = appliedPromo ? Math.round(subtotal * 0.10) : 0;
+      const delivery = subtotal === 0 ? 0 : (subtotal >= 1000 ? 0 : 50);
+      const total = subtotal - discount + delivery;
+      return { subtotal, discount, delivery, total };
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      const { subtotal, discount, delivery, total } = getCartTotals();
+
+      document.querySelectorAll('.cart-count-badge').forEach(el => el.textContent = count);
+      document.querySelectorAll('.cart-total-text').forEach(el => el.textContent = `৳${subtotal}`);
+
+      const container = document.getElementById('cartItemsContainer');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-5 text-secondary">
+            <i class="fa-solid fa-basket-shopping fs-1 mb-3 opacity-50"></i>
+            <h6>Your delivery bag is empty</h6>
+            <p class="small mb-0">Explore our burgers, pizzas, steaks, and beverages to start your order.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="d-flex align-items-center justify-content-between bg-white p-2 px-3 rounded-4 mb-2 shadow-sm border">
+            <div class="d-flex align-items-center gap-2">
+              <img src="${item.image}" class="rounded-3 object-fit-cover" style="width:50px;height:50px;" onerror="this.src='https://placehold.co/100x100/1B263B/D4A853?text=Food'" />
+              <div>
+                <h6 class="mb-0 fw-bold small">${item.name}</h6>
+                <small class="text-secondary">৳${item.price} × ${item.qty} = <strong class="text-dark">৳${item.price * item.qty}</strong></small>
+              </div>
+            </div>
+            <div class="d-flex align-items-center gap-1">
+              <button class="btn btn-sm btn-light border rounded-circle p-0" style="width:26px;height:26px;" onclick="updateCartQty(${item.id}, -1)">-</button>
+              <span class="fw-bold small px-1">${item.qty}</span>
+              <button class="btn btn-sm btn-dark rounded-circle p-0" style="width:26px;height:26px;" onclick="updateCartQty(${item.id}, 1)">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('cartSubtotalText').textContent = `৳${subtotal}`;
+      const discRow = document.getElementById('cartDiscountRow');
+      if (appliedPromo && discount > 0) {
+        discRow.classList.remove('d-none');
+        document.getElementById('cartDiscountText').textContent = `-৳${discount}`;
+      } else {
+        discRow.classList.add('d-none');
+      }
+      document.getElementById('cartDeliveryText').textContent = delivery === 0 && subtotal > 0 ? 'FREE' : `৳${delivery}`;
+      document.getElementById('cartGrandTotalText').textContent = `৳${total}`;
+      const chkBtn = document.getElementById('chkFinalBtnAmount');
+      if (chkBtn) chkBtn.textContent = `৳${total}`;
+    }
+
+    // 8. CHECKOUT & ORDER TRACKING
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        showToast('Please add at least one dish to your bag first!', 'fa-circle-info');
+        return;
+      }
+      const offcanvasEl = document.getElementById('cartOffcanvas');
+      const instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (instance) {
+        instance.hide();
+      }
+      updateCartUI();
+      setTimeout(() => {
+        openBsModal('checkoutModal');
+      }, 220);
+    }
+
+    function selectPaymentMethod(method, cardEl) {
+      selectedPayment = method;
+      document.querySelectorAll('.pay-method-card').forEach(c => c.classList.remove('selected'));
+      if (cardEl) cardEl.classList.add('selected');
+
+      const extraBox = document.getElementById('mobilePaymentFields');
+      const instr = document.getElementById('mobilePayInstruction');
+      if (method === 'bKash' || method === 'Nagad') {
+        extraBox.classList.remove('d-none');
+        instr.innerHTML = `Send <strong>${method}</strong> Payment to Ragib's Kitchen Merchant: <strong>+880 1700-000000</strong>`;
+      } else if (method === 'Debit/Credit Card') {
+        extraBox.classList.remove('d-none');
+        instr.innerHTML = `Card POS / Online Gateway Selected — Enter last 4 digits of your card:`;
+      } else {
+        extraBox.classList.add('d-none');
+      }
+    }
+
+    function submitFinalOrder(e) {
+      e.preventDefault();
+      const { total } = getCartTotals();
+      const orderId = 'RK-2026-' + Math.floor(100 + Math.random() * 900);
+      const itemsSummary = cart.map(i => `${i.qty}x ${i.name}`).join(', ');
+
+      const newOrder = {
+        id: orderId,
+        customer: document.getElementById('chkName').value,
+        phone: document.getElementById('chkPhone').value,
+        orderType: document.getElementById('chkOrderType').value,
+        address: document.getElementById('chkAddress').value,
+        payment: selectedPayment,
+        items: itemsSummary,
+        total: total,
+        status: 'Confirmed',
+        time: 'Just now'
+      };
+
+      orders.unshift(newOrder);
+      cart = [];
+      appliedPromo = false;
+      saveState();
+      updateCartUI();
+      renderAdminDashboard();
+
+      closeBsModal('checkoutModal');
+      showToast(`Order <strong>#${orderId}</strong> confirmed! Opening live tracker...`);
+
+      setTimeout(() => {
+        openOrderTrackerModal(orderId);
+      }, 260);
+    }
+
+    function renderOrderTracker(selectedId) {
+      const body = document.getElementById('orderTrackerBody');
+      if (orders.length === 0) {
+        body.innerHTML = `<div class="text-center py-4">No active orders found. Place an order from our menu to track it live!</div>`;
+        return;
+      }
+
+      const activeOrder = selectedId ? orders.find(o => o.id === selectedId) || orders[0] : orders[0];
+      const currentIdx = ORDER_STATUSES.indexOf(activeOrder.status);
+
+      const stepsHtml = ORDER_STATUSES.slice(0, 6).map((st, idx) => {
+        let stateClass = '';
+        if (activeOrder.status === 'Cancelled') stateClass = '';
+        else if (idx < currentIdx) stateClass = 'completed';
+        else if (idx === currentIdx) stateClass = 'active';
+
+        const icons = ['fa-clock', 'fa-circle-check', 'fa-fire-burner', 'fa-box-open', 'fa-motorcycle', 'fa-house-circle-check'];
+        return `
+          <div class="tracker-step ${stateClass}">
+            <div class="tracker-dot"><i class="fa-solid ${icons[idx]}"></i></div>
+            <div class="small fw-semibold" style="font-size:0.73rem;">${st}</div>
+          </div>
+        `;
+      }).join('');
+
+      body.innerHTML = `
+        <div class="d-flex flex-wrap justify-content-between align-items-center p-3 rounded-4 mb-4 text-white" style="background:var(--rk-primary);">
+          <div>
+            <small class="text-white-50 d-block">Tracking Order ID</small>
+            <h5 class="fw-bold mb-0" style="color:var(--rk-accent);">#${activeOrder.id}</h5>
+          </div>
+          <div>
+            <small class="text-white-50 d-block">Customer & Payment</small>
+            <span class="small fw-semibold">${activeOrder.customer} • ${activeOrder.payment} (৳${activeOrder.total})</span>
+          </div>
+          <div>
+            <span class="badge rounded-pill bg-warning text-dark px-3 py-2 fw-bold">${activeOrder.status}</span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-start gap-2 my-4 flex-wrap">
+          ${stepsHtml}
+        </div>
+
+        <div class="p-3 rounded-4 bg-light border small">
+          <div class="fw-bold mb-1">Ordered Items:</div>
+          <div class="text-secondary mb-2">${activeOrder.items}</div>
+          <div class="d-flex justify-content-between text-secondary border-top pt-2">
+            <span><i class="fa-solid fa-location-dot text-warning me-1"></i> ${activeOrder.address} (${activeOrder.orderType})</span>
+            <span>Updated: ${activeOrder.time}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // 9. TABLE RESERVATION HANDLER
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      const resId = 'RES-' + Math.floor(100 + Math.random() * 900);
+      const newRes = {
+        id: resId,
+        name: document.getElementById('resName').value,
+        phone: document.getElementById('resPhone').value,
+        date: document.getElementById('resDate').value,
+        time: document.getElementById('resTime').value,
+        guests: document.getElementById('resGuests').value,
+        area: document.getElementById('resArea').value,
+        status: 'Pending'
+      };
+
+      reservations.unshift(newRes);
+      saveState();
+      renderAdminDashboard();
+
+      const box = document.getElementById('reservationSuccessBox');
+      box.classList.remove('d-none');
+      box.innerHTML = `
+        <div class="d-flex align-items-center gap-3">
+          <i class="fa-solid fa-circle-check fs-3 text-success"></i>
+          <div>
+            <h6 class="fw-bold mb-1">Table Reservation Received! (ID: #${resId})</h6>
+            <div class="small">We have reserved a spot for <strong>${newRes.guests}</strong> under <strong>${newRes.name}</strong> on <strong>${newRes.date} at ${newRes.time}</strong> (${newRes.area}).</div>
+          </div>
+        </div>
+      `;
+      e.target.reset();
+      showToast(`Reservation <strong>#${resId}</strong> submitted!`);
+    }
+
+    // 10. GALLERY & LIGHTBOX
+    function filterGallery(cat, btnEl) {
+      if (btnEl) {
+        btnEl.parentElement.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      const grid = document.getElementById('galleryGrid');
+      const list = cat === 'all' ? galleryItems : galleryItems.filter(g => g.category === cat);
+      grid.innerHTML = list.map(g => `
+        <div class="col-sm-6 col-lg-4">
+          <div class="gallery-item" onclick="openLightbox('${g.img}', '${g.title}')">
+            <img src="${g.img}" alt="${g.title}" />
+            <div class="gallery-overlay">
+              <span class="badge bg-warning text-dark w-auto align-self-start mb-1 text-uppercase" style="font-size:0.65rem;">${g.category}</span>
+              <h6 class="font-serif-display fw-bold mb-0">${g.title}</h6>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openLightbox(img, title) {
+      document.getElementById('lightboxImage').src = img;
+      document.getElementById('lightboxCaption').textContent = title + " — Ragib's Kitchen, Dinajpur";
+      openBsModal('galleryLightboxModal');
+    }
+
+    // 11. CUSTOMER REVIEWS
+    function renderCustomerReviews() {
+      const container = document.getElementById('customerReviewsList');
+      container.innerHTML = reviews.map(r => `
+        <div class="col-md-6">
+          <div class="bg-white p-4 rounded-4 shadow-sm border h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="text-warning small">${'★'.repeat(r.rating)}</div>
+                <small class="text-secondary">${r.date}</small>
+              </div>
+              <p class="small text-secondary fst-italic mb-3">"${r.text}"</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 pt-2 border-top">
+              <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold small" style="width:34px;height:34px;background:var(--rk-primary);color:var(--rk-accent);">
+                ${r.name.charAt(0)}
+              </div>
+              <div>
+                <div class="fw-bold small">${r.name}</div>
+                <small class="text-success" style="font-size:0.7rem;"><i class="fa-solid fa-circle-check me-1"></i>Verified Diner • Dinajpur</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleNewReviewSubmit(e) {
+      e.preventDefault();
+      const newRev = {
+        name: document.getElementById('revName').value,
+        rating: parseInt(document.getElementById('revRating').value, 10),
+        date: 'Nov 2026',
+        text: document.getElementById('revComment').value
+      };
+      reviews.unshift(newRev);
+      saveState();
+      renderCustomerReviews();
+      renderAdminDashboard();
+      closeBsModal('writeReviewModal');
+      e.target.reset();
+      showToast('Thank you! Your review has been published.');
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      e.target.reset();
+      showToast('Message received! Ragib\'s Kitchen team will contact you shortly.');
+    }
+
+    // 12. ADMIN PORTAL & REAL-TIME MANAGEMENT
+    function switchAppView(view) {
+      closeMobileNavbarIfOpen();
+      const storeEl = document.getElementById('customerStoreView');
+      const adminEl = document.getElementById('adminPortalView');
+      const toggleText = document.getElementById('adminToggleText');
+
+      if (view === 'admin') {
+        storeEl.classList.add('d-none');
+        adminEl.classList.remove('d-none');
+        toggleText.textContent = 'Storefront';
+        renderAdminDashboard();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        adminEl.classList.add('d-none');
+        storeEl.classList.remove('d-none');
+        toggleText.textContent = 'Admin Portal';
+      }
+    }
+
+    function toggleAdminPortal() {
+      const adminEl = document.getElementById('adminPortalView');
+      if (adminEl.classList.contains('d-none')) {
+        switchAppView('admin');
+      } else {
+        switchAppView('store');
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      isAdminLoggedIn = true;
+      document.getElementById('adminLoginGate').classList.add('d-none');
+      document.getElementById('adminWorkspace').classList.remove('d-none');
+      renderAdminDashboard();
+      showToast('Welcome back, Ragib Hosen! Admin Dashboard unlocked.');
+    }
+
+    function switchAdminTab(tabName, btnEl) {
+      document.querySelectorAll('.admin-tab-pane').forEach(p => p.classList.add('d-none'));
+      document.getElementById(`adminTab-${tabName}`).classList.remove('d-none');
+      document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    function renderAdminDashboard() {
+      const totalRev = orders.filter(o => o.status !== 'Cancelled').reduce((s, o) => s + Number(o.total), 0);
+      document.getElementById('statTotalRevenue').textContent = `৳${totalRev.toLocaleString()}`;
+      document.getElementById('statTotalOrders').textContent = orders.length;
+      document.getElementById('statTotalReservations').textContent = reservations.length;
+      document.getElementById('statTotalMenu').textContent = menuItems.length;
+
+      document.getElementById('adminOrderBadge').textContent = orders.length;
+      document.getElementById('adminResBadge').textContent = reservations.length;
+
+      // Render Orders Table
+      const ordersTbody = document.getElementById('adminOrdersTableBody');
+      ordersTbody.innerHTML = orders.map(o => `
+        <tr>
+          <td class="fw-bold">#${o.id}</td>
+          <td>
+            <div class="fw-semibold small">${o.customer}</div>
+            <small class="text-secondary">${o.phone} • ${o.orderType}</small>
+          </td>
+          <td class="small text-secondary" style="max-width:240px;">${o.items}</td>
+          <td><span class="badge bg-light text-dark border">${o.payment}</span></td>
+          <td class="fw-bold">৳${o.total}</td>
+          <td>
+            <select class="form-select form-select-sm fw-semibold" onchange="updateOrderStatus('${o.id}', this.value)">
+              ${ORDER_STATUSES.map(st => `<option value="${st}" ${o.status === st ? 'selected' : ''}>${st}</option>`).join('')}
+            </select>
+          </td>
+        </tr>
+      `).join('');
+
+      // Render Reservations Table
+      const resStatuses = ['Pending', 'Confirmed', 'Completed', 'Cancelled'];
+      const resTbody = document.getElementById('adminReservationsTableBody');
+      resTbody.innerHTML = reservations.map(r => `
+        <tr>
+          <td class="fw-bold">#${r.id}</td>
+          <td>
+            <div class="fw-semibold small">${r.name}</div>
+            <small class="text-secondary">${r.phone}</small>
+          </td>
+          <td class="small">${r.date} • <strong>${r.time}</strong></td>
+          <td class="small">${r.guests} (${r.area})</td>
+          <td>
+            <select class="form-select form-select-sm fw-semibold" onchange="updateReservationStatus('${r.id}', this.value)">
+              ${resStatuses.map(st => `<option value="${st}" ${r.status === st ? 'selected' : ''}>${st}</option>`).join('')}
+            </select>
+          </td>
+        </tr>
+      `).join('');
+
+      // Render Admin Menu Table
+      const menuTbody = document.getElementById('adminMenuTableBody');
+      menuTbody.innerHTML = menuItems.map(m => `
+        <tr>
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <img src="${m.image}" class="rounded-2 object-fit-cover" style="width:40px;height:40px;" onerror="this.src='https://placehold.co/80x80/1B263B/D4A853?text=Dish'" />
+              <span class="fw-semibold small">${m.name}</span>
+            </div>
+          </td>
+          <td><span class="badge bg-secondary bg-opacity-10 text-dark">${m.category}</span></td>
+          <td class="fw-bold">৳${m.price}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-outline-danger" onclick="deleteMenuItem(${m.id})">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Render Admin Reviews
+      const revAdminList = document.getElementById('adminReviewsList');
+      revAdminList.innerHTML = reviews.map((r, idx) => `
+        <div class="col-md-6">
+          <div class="bg-white p-3 rounded-4 border d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-bold small">${r.name} <span class="text-warning ms-1">${'★'.repeat(r.rating)}</span></div>
+              <p class="small text-secondary mb-0 mt-1">"${r.text}"</p>
+            </div>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="deleteReview(${idx})"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateOrderStatus(orderId, newStatus) {
+      const ord = orders.find(o => o.id === orderId);
+      if (ord) {
+        ord.status = newStatus;
+        ord.time = 'Updated by Admin';
+        saveState();
+        renderAdminDashboard();
+        showToast(`Order <strong>#${orderId}</strong> status updated to <strong>${newStatus}</strong>!`);
+      }
+    }
+
+    function updateReservationStatus(resId, newStatus) {
+      const res = reservations.find(r => r.id === resId);
+      if (res) {
+        res.status = newStatus;
+        saveState();
+        renderAdminDashboard();
+        showToast(`Reservation <strong>#${resId}</strong> marked as <strong>${newStatus}</strong>!`);
+      }
+    }
+
+    function handleAdminAddMenu(e) {
+      e.preventDefault();
+      const name = document.getElementById('newMenuName').value;
+      const category = document.getElementById('newMenuCategory').value;
+      const price = parseInt(document.getElementById('newMenuPrice').value, 10);
+      const image = document.getElementById('newMenuImg').value || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80';
+
+      menuItems.unshift({
+        id: Date.now(),
+        name,
+        category,
+        price,
+        rating: 5.0,
+        tag: 'New Arrival',
+        image,
+        desc: `Freshly crafted ${name} prepared at Ragib's Kitchen, Dinajpur.`
+      });
+
+      saveState();
+      renderMenuCards();
+      renderAdminDashboard();
+      e.target.reset();
+      showToast(`Added <strong>${name}</strong> (৳${price}) to the live menu!`);
+    }
+
+    function deleteMenuItem(id) {
+      menuItems = menuItems.filter(m => m.id !== id);
+      saveState();
+      renderMenuCards();
+      renderAdminDashboard();
+      showToast('Menu item removed.');
+    }
+
+    function deleteReview(idx) {
+      reviews.splice(idx, 1);
+      saveState();
+      renderCustomerReviews();
+      renderAdminDashboard();
+      showToast('Review deleted.');
+    }
+
+    // 13. INITIALIZE ON WINDOW LOAD
+    window.onload = function () {
+      // Set default reservation date to today
+      const dateInput = document.getElementById('resDate');
+      if (dateInput) {
+        dateInput.valueAsDate = new Date();
+      }
+      renderMenuCards();
+      updateCartUI();
+      filterGallery('all');
+      renderCustomerReviews();
+      renderAdminDashboard();
+
+      // Keep navbar pinned and update shadow smoothly on scroll
+      window.addEventListener('scroll', function () {
+        const nav = document.querySelector('.rk-navbar');
+        if (!nav) return;
+        if (window.scrollY > 20) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    };
+  </script>
+</body>
+</html>
